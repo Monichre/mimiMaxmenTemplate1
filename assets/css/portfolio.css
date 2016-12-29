@@ -1,0 +1,128 @@
+/*---------------------------
+-MQs
+-----------------------------*/
+/*---------------------------
+-FONTS
+-----------------------------*/
+@import url(https://fonts.googleapis.com/css?family=Abril+Fatface);
+/*---------------------------
+-SETUPS
+-----------------------------*/
+*, *:before, *:after {
+  box-sizing: border-box; }
+
+* {
+  min-height: 0;
+  min-width: 0;
+  margin: 0;
+  padding: 0; }
+
+/*---------------------------
+-type
+-----------------------------*/
+body {
+  line-height: 1.7;
+  color: #222;
+  background-color: #fff;
+  font-weight: 400;
+  font-style: normal;
+  -ms-text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility; }
+
+h1, h3 {
+  font-family: "Abril Fatface", "georgia", serif; }
+
+.code {
+  padding: 2em;
+  font-size: 0.85em;
+  background-color: #fff;
+  color: #555;
+  overflow-x: auto; }
+
+/*---------------------------
+-MAST
+-----------------------------*/
+.mast {
+  background-color: #eee;
+  padding: 4em 0; }
+  .mast__header {
+    margin: 0 auto;
+    padding: 0 1%; }
+    .mast__header h1 {
+      font-size: 2em;
+      text-align: center; }
+      @media (min-width: 65em) {
+        .mast__header h1 {
+          font-size: 3.2em; } }
+  .mast__content {
+    max-width: 50em;
+    margin: 0 auto; }
+
+/*---------------------------
+-BLOCKS
+-----------------------------*/
+.blocks {
+  color: #fff;
+  background-color: #333; }
+  .blocks__grid {
+    display: flex;
+    flex-direction: row;
+    flex-flow: wrap;
+    margin-left: -0.1%;
+    margin-right: -0.1%;
+    position: relative;
+    z-index: 0;
+    background-color: #333; }
+    .blocks__grid > * {
+      padding: 0.1%;
+      flex-basis: 50%; }
+      @media (min-width: 54em) {
+        .blocks__grid > * {
+          flex-basis: 33.33333%; } }
+      @media (min-width: 65em) {
+        .blocks__grid > * {
+          flex-basis: 33.33333%; } }
+      @media (min-width: 91em) {
+        .blocks__grid > * {
+          flex-basis: 25%; } }
+
+/*---------------------------
+-BLOCK
+-----------------------------*/
+.block__content {
+  z-index: 3;
+  position: relative;
+  display: block;
+  padding: 1em;
+  height: 0em;
+  padding-bottom: 90%;
+  will-change: background;
+  overflow: hidden; }
+.block__bg {
+  z-index: 0;
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  top: 0;
+  left: 0;
+  margin: 0;
+  overflow: hidden;
+  background-position: 50%;
+  background-repeat: no-repeat;
+  background-size: cover; }
+.block__header {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  margin: 0 auto; }
+.block h3 {
+  font-size: 1.8vw;
+  font-family: "Abril Fatface", "georgia", serif;
+  letter-spacing: 0.02em;
+  font-weight: 400; }
+
+/*# sourceMappingURL=portfolio.css.map */

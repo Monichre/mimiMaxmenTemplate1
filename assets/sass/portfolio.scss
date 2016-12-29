@@ -1,0 +1,201 @@
+/*---------------------------
+-MQs
+-----------------------------*/
+//Smallest phone
+$mq-xsmall: 22em;
+//phone
+$mq-small: 32em;
+//Tablet
+$mq-med: 54em;
+//laptop
+$mq-large: 65em;
+//Past laptop
+$mq-xlarge: 91em;
+//Mid Size monitor
+$mq-xxlarge: 115em;
+//Thunderbold goes to 157em
+$mq-xxxlarge: 130em;
+
+
+/*---------------------------
+-FONTS
+-----------------------------*/
+@import url(https://fonts.googleapis.com/css?family=Abril+Fatface);
+$font-header: "Abril Fatface", "georgia", serif;
+
+//----------------------------
+//  bg-img-abs()
+//  @description: Absolutely positioned bg element
+//-----------------------------
+@mixin bg-img-abs {
+  z-index: 0;
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  top: 0;
+  left: 0;
+  margin: 0;
+  overflow:hidden;
+  background-position: 50%;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+//-----------------------------
+//  center-vh()
+//  @description: vert & horz centering via transform
+//----------------------------
+@mixin center-vh{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  margin: 0 auto;
+}
+
+//-----------------------------
+//  flex-grid();
+//  @description: Creates grid blocks via flexbox
+//  @param: $sm, $med, $lg, $xl - @media sizes (optional)
+//  @param: $pad - items padding
+//  @useage: @include flex-grid(1, 2, 3, 4, 0.1em);
+//  @useage: @include flex-grid(1, 2, $pad: 0.5em);
+//-----------------------------
+@mixin flex-grid($sm:null, $med:null, $lg:null, $xl:null, $pad:0) {
+  display: flex;
+  flex-direction: row;
+  flex-flow: wrap;
+  margin-left: -$pad;
+  margin-right: -$pad;
+
+  & > * {
+    padding:$pad;
+    flex-basis: 100%/$sm;
+
+    @media(min-width: $mq-med){
+      flex-basis: 100%/$med;
+    }
+
+    @if $lg {
+      @media(min-width: $mq-large){
+        flex-basis: 100%/$lg;
+      }
+    }
+
+    @if $xl {
+      @media(min-width: $mq-xlarge){
+        flex-basis: 100%/$xl;
+      }
+    }
+  }
+}
+/*---------------------------
+-SETUPS
+-----------------------------*/
+*, *:before, *:after {
+  box-sizing: border-box;
+}
+
+*{
+  min-height: 0;
+  min-width: 0;
+  margin: 0;
+  padding: 0;
+}
+
+/*---------------------------
+-type
+-----------------------------*/
+body {
+  line-height: 1.7;
+  color: #222;
+  background-color: #fff;
+  font-weight: 400;
+  font-style: normal;
+  -ms-text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+h1, h3{
+  font-family: $font-header;
+}
+
+.code{
+  padding: 2em;
+  font-size: 0.85em;
+  background-color: #fff;
+  color: #555;
+  overflow-x:auto;
+}
+
+/*---------------------------
+-MAST
+-----------------------------*/
+.mast{
+  background-color: #eee;
+  padding: 4em 0;
+
+  &__header{
+    margin: 0 auto;
+    padding: 0 1%;
+
+    h1{
+      font-size: 2em;
+      text-align:center;
+      @media (min-width: $mq-large){
+        font-size: 3.2em;
+      }
+    }
+  }
+  &__content{
+    max-width: 50em;
+    margin: 0 auto;
+  }
+}
+
+/*---------------------------
+-BLOCKS
+-----------------------------*/
+.blocks{
+  color: #fff;
+  background-color: #333;
+
+  &__grid{
+    // APPLY THE GRID
+    @include flex-grid(2,3,3,4, .1%);
+    position: relative;
+    z-index: 0;
+    background-color: #333;
+  }
+}
+/*---------------------------
+-BLOCK
+-----------------------------*/
+.block{
+
+  &__content{
+    z-index: 3;
+    position: relative;
+    display: block;
+    padding: 1em;
+    height: 0em;
+    padding-bottom: 90%;
+    will-change: background;
+    overflow: hidden;
+  }
+  &__bg{
+    @include bg-img-abs();
+  }
+  &__header{
+    @include center-vh();
+  }
+
+  h3{
+    font-size: 1.8vw;
+    font-family: $font-header;
+    letter-spacing: 0.02em;
+    font-weight: 400;
+  }
+}
